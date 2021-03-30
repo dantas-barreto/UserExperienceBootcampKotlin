@@ -28,6 +28,16 @@ class ContactHelperTest {
         assertEquals(2, list.size)
     }
 
+    @Test
+    fun `Quando chamar o método getListContacts() sem contatos, deve retornar uma lista vazia`() {
+        // Preparação
+        mockListaContatosVazia()
+
+        // Validação
+        val list = contactHelper.getListContacts()
+        assertEquals(0, list.size)
+    }
+
     private fun mockListaDoisContatos() {
         contactHelper.setListContacts(
             arrayListOf(
@@ -43,5 +53,9 @@ class ContactHelperTest {
                 )
             )
         )
+    }
+
+    private fun mockListaContatosVazia() {
+        contactHelper.setListContacts(arrayListOf())
     }
 }
